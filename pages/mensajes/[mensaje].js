@@ -70,6 +70,7 @@ export default function Mensaje() {
               <div >
                 <p>Descripción:</p><p className="detalle-mensjae"> {detalleMensaje.descripcion}</p>
               </div>
+              <div>Categoria: {detalleMensaje.categoria}</div>
             <div className="contenedorIndoContacto">
                 <p>Información para contactar al cliente:</p>
                 <div className="infoContacto">
