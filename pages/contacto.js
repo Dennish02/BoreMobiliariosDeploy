@@ -43,7 +43,7 @@ export default function Contacto() {
    async function enviarCorreoEma(email, nombre, descripcion, categoria){
         let config ={
             method:'post',
-            url: `${process.env.NEXT_PUBLIC_API_URL}/api/contacto`,
+            url: `${process.env.NEXT_PUBLIC_API_URL}/api`,
             headers:{
                 'Content-Type': 'application/json',
             },
