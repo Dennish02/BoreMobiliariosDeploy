@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { FirebaseContext } from '../../firebase'
 import Link from 'next/link'
 import Router from 'next/router';
