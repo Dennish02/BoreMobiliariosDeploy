@@ -139,6 +139,7 @@ export default function Subirimagen() {
                                 <option value='closets' >Clósets</option>
                                 <option value='dormitorio'>Dormitorios</option>
                                 <option value='oficina'>Muebles oficina</option>
+                                <option value='baño'>Muebles de Baño</option>
                             </select>
                             {errores.categoria && <p className='errores'>{errores.categoria}</p>}
                         </div>

@@ -1,9 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
+import { FirebaseContext } from "../firebase";
+import { useRouter } from 'next/router';
 
 const DetallesTrabajos = ({ trabajo, filtro }) => {
-    const { nombre, categoria, img } = trabajo;
+    const {usuario, firebase}= useContext(FirebaseContext)
+    const { nombre, categoria, img, id } = trabajo;
+    const router = useRouter();
     function handleView(e){
         const url = e.target.src;
         const imagen = document.createElement('div');
@@ -23,10 +27,38 @@ const DetallesTrabajos = ({ trabajo, filtro }) => {
         body.appendChild(overlay);
         body.classList.add('fijar-body');
     }
+
+    const puedeBorrar = () => {
+        if (!usuario) return false;
+      
+        if(usuario) {
+          return true
+        }
+      }
+      const eliminarTrabajo = async () => {
+        if(usuario){
+          router.push('/galeria')
+        }
+        if (!usuario) return router.push('/galeria');
+        try {
+          await firebase.db.collection('trabajos').doc(id).delete();
+          router.push('/galeria')
+      
+        } catch (error) {
+          console.log(error)
+        }
+      }
+      
     return (
         categoria === filtro &&
         <div
-        onClick={handleView} className="cadaimagen">
+        onClick={handleView} 
+        className="cadaimagen">
+            { puedeBorrar() &&
+                <button className="botoneliminar boton-eliminar"
+                  onClick={eliminarTrabajo}
+                >ELIMINAR</button>
+              }
             <Image
                 
                 src={img}
@@ -36,6 +68,7 @@ const DetallesTrabajos = ({ trabajo, filtro }) => {
                 layout="responsive"
                // unoptimized={true}
             />
+             
          </div>    
        
     )

@@ -160,13 +160,14 @@ export default function Contacto() {
                         <legend>Descripción del Presupuesto:</legend>
                         <div className='campo'>
                             <label htmlFor="descripcion">Categoría:</label>
-                           <select name='categoria' onBlur={handleBlur} onChange={handleSelected}>
-                           <option value='' defaultValue >--Seleccione--</option>
+                            <select name='categoria' onBlur={handleBlur} onChange={handleSelected}>
+                            <option value='' defaultValue >--Seleccione--</option>
                             <option value='cocinas'>Cocinas</option>
                             <option value='ce' >Centros de entretenimiento</option>
                             <option value='closets' >Clósets</option>
                             <option value='dormitorio'>Dormitorios</option>
                             <option value='oficina'>Muebles oficina</option>
+                            <option value='baño'>Muebles de Baño</option>
                            </select>
                         </div>
                         {errores.categoria && <p className='errores'>{errores.categoria}</p>}

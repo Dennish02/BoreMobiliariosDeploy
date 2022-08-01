@@ -50,6 +50,13 @@ export default function Galeria() {
           className={`${filtro === 'ce' ? 'selected-inputGaleria' : 'inputGaleria'}`}
           onClick={handleFilter}
           />
+          <input
+          type='submit'
+          value='Muebles de Baño'
+          name='baño'
+          className={`${filtro === 'baño' ? 'selected-inputGaleria' : 'inputGaleria'}`}
+            onClick={handleFilter}
+          />
         </div>
             <div className='galeria'>
              
