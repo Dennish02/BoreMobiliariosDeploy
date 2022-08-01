@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect, useContext} from "react";
-import  {useRouter}  from 'next/router';
 import { FirebaseContext } from "../firebase";
 import DetalleMensaje from "../components/DetallesMensaje";
 import Layout from '../components/layout/Layout'
@@ -9,7 +8,6 @@ import Loading from "../components/layout/Loading";
 
 
 export default function Dashboard() {
-  const router = useRouter();
   const [mensajes, guardarMensajes]= useState([])
   const {usuario, firebase}= useContext(FirebaseContext)
   useEffect(()=>{

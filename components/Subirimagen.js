@@ -27,7 +27,7 @@ export default function Subirimagen() {
     const [data, setData] = useState({});
     const [per, setPerc] = useState(null);
 
-    const { usuario, firebase } = useContext(FirebaseContext);
+    const { firebase } = useContext(FirebaseContext);
     const router = useRouter();
 
     const {
