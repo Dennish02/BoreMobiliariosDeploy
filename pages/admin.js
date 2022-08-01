@@ -40,13 +40,13 @@ export default function Admin() {
     }
   }
 useEffect(()=>{
-  onDOMContentLoaded = ()=>{
+ 
     if(usuario){
       router.push('/dashboard')
     }
-  }
   
-})
+  
+},[])
 
     return (
         <Layout inicio={false}>
