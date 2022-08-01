@@ -1,13 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useContext } from "react";
-
+import dynamic from "next/dynamic";
 import { useRouter } from 'next/router';
 import { FirebaseContext } from "../../firebase";
 import Layout from "../../components/layout/Layout";
-import Error404 from "../../components/layout/404";
-import  {toast} from 'react-toastify';
-import Loading from "../../components/layout/Loading";
 
+import  {toast} from 'react-toastify';
+
+
+const ErrorDynamic = dynamic (()=>import('../../components/layout/404'))
+const LoadingDynamic = dynamic (()=>import('../../components/layout/Loading'))
 export default function Mensaje() {
   //state del componente
   const [ detalleMensaje, setdetalleMensaje] = useState({})
@@ -60,7 +62,7 @@ export default function Mensaje() {
   return (
 
     <Layout inicio={false}>
-    { error ? <Error404/> : 
+    { error ? <ErrorDynamic/> : 
     Object.keys(detalleMensaje).length !== 0 ?
           <div className="contenedor sombra">
           
@@ -88,7 +90,7 @@ export default function Mensaje() {
             onClick={handleDelete}
             className="boton-eliminar">Eliminar Mensaje</button>
         </div>
-      : <Loading/>
+      : <LoadingDynamic/>
   }
     </Layout>
   )
