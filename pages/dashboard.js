@@ -1,23 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect, useContext} from "react";
+import dynamic from "next/dynamic";
 import { FirebaseContext } from "../firebase";
-import DetalleMensaje from "../components/DetallesMensaje";
 import Layout from '../components/layout/Layout'
-import Subirimagen from "../components/Subirimagen";
-import Loading from "../components/layout/Loading";
 
+const LoadingDynamic = dynamic(()=>import('../components/layout/Loading'))
+const SubirDynamic = dynamic(()=>import('../components/Subirimagen'))
+const DetalleDynamic = dynamic(()=>import('../components/DetallesMensaje'))
 
 export default function Dashboard() {
   const [mensajes, guardarMensajes]= useState([])
   const {usuario, firebase}= useContext(FirebaseContext)
   useEffect(()=>{
-   
     const obtenerMensajes = () =>{
       firebase.db.collection('mensajes').orderBy('creado', 'desc').onSnapshot(manejarSnapshot)
     }
-   
     obtenerMensajes()
-   
   },[])
   
   function manejarSnapshot(snapshot){
@@ -27,34 +25,26 @@ export default function Dashboard() {
         ...doc.data()
       }
     })
-   guardarMensajes(mensajes);
-    
+   guardarMensajes(mensajes); 
   }
  
-  return (
-    
+  return (  
     <Layout inicio={false}>
-      {!usuario ? <Loading/> :
+      {!usuario ? <LoadingDynamic/> :
            <section className="contenedor sombra">
            <div className="allmensajes">
              <h3 className="titulocargando">Mensajes</h3>
-             {mensajes.map(mensaje=>{
-             
+             {mensajes.map(mensaje=>{       
               return(
-               <DetalleMensaje
+               <DetalleDynamic
                key={mensaje.id}
                mensaje={mensaje}/>
              )})}
- 
-           </div>
-           
-             <h3>Agregar imágenes</h3>
-             <Subirimagen/>
-           
+           </div>        
+            <h3>Agregar imágenes</h3>
+             <SubirDynamic/>         
        </section>
       }
-   
-
     </Layout>
   )
 }

@@ -6,15 +6,15 @@ const nextConfig = {
   images: {
     domains:["firebasestorage.googleapis.com"],
   },
-  experimental: {
-    images: {
-      unoptimized: true,
-    },
-  },
+  // experimental: {
+  //   images: {
+  //     unoptimized: true,
+  //   },
+  // },
 }
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
-  openAnalyzer: false,
+  openAnalyzer: true,
 })
 module.exports = {
   compress: true,

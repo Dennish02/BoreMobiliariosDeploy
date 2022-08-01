@@ -1,8 +1,9 @@
 import React from 'react'
 import Head from 'next/head';
-import Header from './Header';
-import Footer from './Footer';
+import dynamic from 'next/dynamic';
 
+const HeDynamic = dynamic (()=>import('./Header'))
+const FooterDinamic = dynamic (()=> import('./Footer'))
 export default function Layout(props) {
   
   const {inicio} = props;
@@ -15,11 +16,11 @@ export default function Layout(props) {
         <title>Boré Mobiliarios</title>
         <meta name="description" content="Pagina principal de Bore mobiliarios muebles en MDF" />
       </Head>
-      <Header inicio={inicio} />
+      <HeDynamic inicio={inicio} />
       <main>
         {props.children}
       </main>
-      <Footer/>
+      <FooterDinamic/>
     </>
   )
 }

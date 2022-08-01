@@ -1,24 +1,20 @@
-
-
-import Basestabajo from "../components/Basestabajo";
+import dynamic from "next/dynamic";
 import Layout from "../components/layout/Layout";
-import Nosotros from "../components/Nosotros.js";
-import SeccionImagen from "../components/seccionImagen";
-import Trabajos from "../components/Trabajos.js";
 
+const TrabajosDynamic = dynamic(()=>import('../components/Trabajos'))
+const SeccionImagenDynamic = dynamic(()=>import('../components/seccionImagen'))
+const NosotrosDynamic = dynamic(()=>import('../components/Nosotros'))
+const BaseTrabajosDynamic = dynamic(()=>import('../components/Basestabajo'))
 
 export default function Home() {
 
   return (
    
     <Layout inicio={true}>
-      <Trabajos />
-      <SeccionImagen/>
-      <Basestabajo/>
-      <Nosotros />
-    
+      <TrabajosDynamic />
+      <SeccionImagenDynamic/>
+      <BaseTrabajosDynamic/>
+      <NosotrosDynamic /> 
     </Layout>
-     
-     
   )
 }
