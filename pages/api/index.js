@@ -12,11 +12,14 @@ export default async (req, res)  =>{
       user: process.env.NEXT_EMAIL_USER,
       pass: process.env.NEXT_EMAIL_PASS,
     },
+    tls:{
+      rejectUnauthorized: false
+    }
   });
 try {
   await transport.sendMail({
     from: email,
-    to: 'contacto@boremobiliarios.com',
+    to: 'presupuesto@boremobiliarios.com',
     subject: "Bore Mobiliarios",
     text: "Solicitud de presupuesto Bore Mobiliarios",
     html: `
@@ -29,6 +32,7 @@ try {
   });
   res.status(200).json({response: 'Correo enviado'})
 } catch (error) {
+  res.status(404).json({error: error.message})
   console.log(error.message);
 }
 }
