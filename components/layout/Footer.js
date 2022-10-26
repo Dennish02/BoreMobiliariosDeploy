@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function Footer () {
   return (
     <div className='footer'>
-        <p>Developed by <a className='creators' target='Dennis' href='https://www.dennishesler.com.ar'>Hesler Dennis</a> y <a className='creators' target='Joanthan' href='https://www.linkedin.com/in/jonathan-pelinski/'>Jonathan Pelinski</a> </p>
+        <p>Developed by <a className='creators' target='Dennis' href='https://www.dennishesler.com.ar'>Hesler Dennis</a> y <a className='creators' target='Joanthan' href='https://jonathanpelinski.vercel.app'>Jonathan Pelinski</a> </p>
       <div className='contRedes'>
         <p>Nuestras Redes:</p>
       <div className="redes">
